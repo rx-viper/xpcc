@@ -106,6 +106,15 @@ public:
 			return temp / 256.f;
 		}
 
+		/// @return the temperature as 1/256 th degrees Celsius
+		int16_t
+		getTemperatureRaw()
+		{
+			int16_t *rData = reinterpret_cast<int16_t*>(data);
+			int16_t temp = xpcc::fromBigEndian(*rData);
+			return temp;
+		}
+
 		/// @return only the signed integer part of the temperature in Celsius
 		int8_t
 		getTemperatureInteger()
