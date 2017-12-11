@@ -90,7 +90,32 @@ protected:
 	/// @endcond
 
 public:
-	typedef lm75::Data Data;
+	struct xpcc_packed
+	Data
+	{
+		template < class I2cMaster >
+		friend class Ds1631;
+
+	public:
+		/// @return the temperature as a signed float in Celsius
+		float
+		getTemperature()
+		{
+			int16_t *rData = reinterpret_cast<int16_t*>(data);
+			int16_t temp = xpcc::fromBigEndian(*rData);
+			return temp / 256.f;
+		}
+
+		/// @return only the signed integer part of the temperature in Celsius
+		int8_t
+		getTemperatureInteger()
+		{
+			return int8_t(data[0]);
+		}
+
+	private:
+		uint8_t data[2];
+	};
 };
 
 /**
