@@ -193,6 +193,11 @@ namespace xpcc
 			return this->errorSum;
 		}
 		
+		inline void
+		resetErrorSum()
+		{
+			this->errorSum = 0;
+		}
 	private:
 		Parameter parameter;
 		
