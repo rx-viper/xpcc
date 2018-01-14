@@ -52,7 +52,7 @@
  *         while (true)
  *         {
  *             Led::set();
- *             PT_CALL(waitForTimer()))
+ *             PT_CALL(waitForTimer());
  *
  *             Led::reset();
  *             PT_CALL(setTimer(200));
@@ -79,14 +79,15 @@
  *     }
  *
  *     xpcc::ResumableResult<bool>
- *     setTimer(uint16_t timeout)
+ *     setTimer(uint16_t new_timeout)
  *     {
  *         RF_BEGIN();
  *
- *         timeout.restart(timeout);
+ *         timeout.restart(new_timeout);
  *
- *         if(timeout.isRunning())
+ *         if(timeout.isArmed()) {
  *             RF_RETURN(true);
+ *         }
  *
  *         // clean up code goes here
  *
@@ -107,7 +108,7 @@
  * @endcode
  *
  * For other examples take a look in the `examples` folder in the XPCC
- * root folder.
+ * root folder. The given example is in `examples/generic/resumable`.
  */
 
 #include "resumable/resumable.hpp"

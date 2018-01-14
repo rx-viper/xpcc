@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # 
 # Copyright (c) 2011, Roboterclub Aachen e.V.
 # All rights reserved.
@@ -126,6 +126,7 @@ def generate(env, **kw):
 		"-mthumb-interwork",
 		"$OPTIMIZATION",
 		"-gdwarf-2",
+		"-g3",
 		"-funsigned-char",
 		"-funsigned-bitfields",
 		"-fshort-enums",
@@ -169,7 +170,7 @@ def generate(env, **kw):
 	env['CXXFLAGS'] = [
 #		"-fverbose-asm",
 #		"-save-temps",		# save preprocessed files
-		"-std=c++11",
+		"-std=c++14",
 		"-fconstexpr-depth=10000", # enable deep recursion
 		"-fno-exceptions",
 		"-fno-rtti",

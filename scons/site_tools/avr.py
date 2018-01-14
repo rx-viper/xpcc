@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # 
 # Copyright (c) 2009, Roboterclub Aachen e.V.
 # All rights reserved.
@@ -123,6 +123,7 @@ def generate(env, **kw):
 		"-mmcu=$AVR_DEVICE", 
 		"$OPTIMIZATION",
 		"-gdwarf-2", 
+		"-g3",
 		"-funsigned-char",
 		"-funsigned-bitfields", 
 		"-fshort-enums", 
@@ -149,8 +150,7 @@ def generate(env, **kw):
 	
 	# C++ flags
 	env['CXXFLAGS'] = [
-#		"-std=gnu++98",
-		"-std=gnu++0x",
+		"-std=c++14",
 		"-fno-exceptions", 
 		"-fno-rtti",
 		"-fno-threadsafe-statics",
