@@ -11,8 +11,8 @@
 #define XPCC_BLOCK_DEVICE_MIRROR_HPP
 
 #include <xpcc/architecture/interface/block_device.hpp>
-
 #include <xpcc/processing/resumable.hpp>
+#include <algorithm>
 
 namespace xpcc
 {
@@ -91,6 +91,7 @@ public:
 	static constexpr bd_size_t BlockSizeRead = BlockDeviceA::BlockSizeRead;
 	static constexpr bd_size_t BlockSizeWrite = std::max(BlockDeviceA::BlockSizeWrite, BlockDeviceB::BlockSizeWrite);
 	static constexpr bd_size_t BlockSizeErase = std::max(BlockDeviceA::BlockSizeErase, BlockDeviceB::BlockSizeErase);
+	static constexpr bd_size_t DeviceSize = std::min(BlockDeviceA::DeviceSize, BlockDeviceB::DeviceSize);
 
 public:
 	/** Direct access to the BlockDeviceA

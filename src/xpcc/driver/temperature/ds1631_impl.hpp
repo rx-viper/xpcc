@@ -28,7 +28,7 @@ xpcc::Ds1631<I2cMaster>::initialize()
 
 	buffer[0] = uint8_t(Command::Configuration);
 
-	this->transaction.configureWriteRead(buffer, 1, &config, 1);
+	this->transaction.configureWriteRead(buffer, 1, reinterpret_cast<uint8_t*>(&config), 1);
 
 	RF_END_RETURN_CALL( this->runTransaction() );
 }
